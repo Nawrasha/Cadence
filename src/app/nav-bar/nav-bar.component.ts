@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
+  menuOpen = false;
+
+  toggleMenu(event: Event): void {
+    event.preventDefault();
+    this.menuOpen = !this.menuOpen;
+  }
 
 }
