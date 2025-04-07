@@ -92,7 +92,8 @@ body {
     width: calc(100% + 40px);
     height: 100%;
     top: 0;
-    transition: all 0.5s ease-in-out;
+    transition: all 10s ease-in-out;
+    transition-delay: 5s;
     background: #d3b5b4;
     clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 50%, calc(100% - 40px) 100%, 0 100%);
   }
