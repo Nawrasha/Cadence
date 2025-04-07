@@ -1,0 +1,214 @@
+div {
+  display: block;
+  unicode-bidi: isolate;
+}
+.main-navigationbar {
+  padding: 15px 0;
+  height: 75px;
+  display: block;
+  unicode-bidi: isolate;
+}
+
+.container {
+  padding: 0 15px;
+  margin: 0;
+  font-size: 100%;
+  list-style: none;
+  display: block;
+  unicode-bidi: isolate;
+  max-width: 100%;
+  height: 45px;
+  box-sizing: border-box;
+}
+
+.main-navigationbar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  padding: 0;
+  margin: 0 auto;
+  height: 45px;
+  max-width: 1400;
+}
+
+.logo-col {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-item-left {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  padding-right: 90px;
+}
+
+.main-nav {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-lnk {
+  font-size: 14px;
+  color: #000;
+  padding-right: 25px;
+  position: relative;
+  list-style: none;
+}
+
+.menu-lnk a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  text-transform: capitalize;
+  position: relative;
+  font-family: 'Gothic A1', sans-serif;
+  color: #555555;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Changer la couleur du texte au survol */
+.menu-lnk:hover a {
+  color: #000000;
+}
+
+/* Bordure animée de droite à gauche */
+.menu-lnk.has-item {
+  position: relative;
+}
+
+.menu-lnk.has-item::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 1px;
+  background-color: #333;
+  transition: width 0.8s ease;
+}
+
+.menu-lnk.has-item:hover::before {
+  width: 100%;
+}
+
+/* Flèche dans le <a> */
+.menu-lnk a::after {
+  content: "";
+  position: absolute;
+  top: 48%;
+  right: -18px;
+  width: 8px;
+  height: 8px;
+  border-top: 1.7px solid #333;
+  border-left: 1.7px solid #333;
+  transform: translateY(-50%) rotate(-135deg);
+  transition: transform 0.3s ease;
+}
+
+.menu-lnk:hover a::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+a, .btn, button {
+  cursor: pointer;
+}
+
+
+
+/* menu right*/
+.menu-item-right {
+  flex: 1;
+  -webkit-box-flex: 1;
+  gap:15px;
+  margin: 0;
+  padding: 0;
+}
+.justify-end {
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+}
+.align-center {
+  -webkit-box-align: center;
+}
+.flex {
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;}
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+
+
+
+/***  works/home
+.menu-lnk {
+    position: relative;
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .menu-lnk > a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .common-arrow {
+    margin-left: 5px;
+    border: solid #555;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    transform: rotate(45deg); 
+    transition: transform 0.3s ease;
+  }
+  
+  
+  .menu-lnk:hover .common-arrow {
+    transform: rotate(-135deg);
+  }
+  
+  
+  .menu-lnk:hover .mega-menu {
+    display: block;
+  }
+  
+  .menu-lnk a::after {
+    content: "";
+    position: absolute;
+    bottom: -3px; 
+    left: 0;
+    width: 0;
+    height: 2px; 
+    background-color: #333;
+    transition: width 0.3s ease;
+  }
+  
+
+  .menu-lnk:hover a::after {
+    width: 100%;
+  }
+  
+ **/
