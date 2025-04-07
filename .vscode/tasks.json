@@ -31,12 +31,12 @@
           "activeOnStart": true,
           "beginsPattern": {
             "regexp": "(.*?)"
-          },
+          
           "endsPattern": {
             "regexp": "bundle generation complete"
           }
         }
       }
     }
-  ]
+    }
 }
