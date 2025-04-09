@@ -9,7 +9,7 @@ import { ThirdComponent } from './homepage/third/third.component';
 
 @Component({
   selector: 'app-root',
-  imports: [NavBarComponent, FooterComponent, FirstComponent, SecondComponent,ThirdComponent],
+  imports: [NavBarComponent, FooterComponent, FirstComponent, SecondComponent, ThirdComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,

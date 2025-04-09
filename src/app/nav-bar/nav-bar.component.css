@@ -1,11 +1,14 @@
+/* General Block Styling */
 div {
   display: block;
   unicode-bidi: isolate;
 }
+
+/* Main Navigation Bar Styling */
 .main-navigationbar {
   padding: 15px 0;
   height: 75px;
-  display: block;
+  display: flex;
   unicode-bidi: isolate;
 }
 
@@ -30,12 +33,24 @@ div {
   padding: 0;
   margin: 0 auto;
   height: 45px;
-  max-width: 1400;
+  max-width: 1400px;
 }
 
 .logo-col {
   display: flex;
   justify-content: center;
+}
+.main-navigationbar .logo-col a {
+  display: block;
+}
+h1{
+  font-size: 64px;
+  font-weight: 400;
+  margin: 0;
+}
+img {
+  max-width: 100%;
+  display: block;
 }
 
 .menu-item-left {
@@ -76,12 +91,12 @@ div {
   transition: color 0.3s ease;
 }
 
-/* Changer la couleur du texte au survol */
+/* Hover effect for text color */
 .menu-lnk:hover a {
   color: #000000;
 }
 
-/* Bordure animée de droite à gauche */
+/* Animated border effect */
 .menu-lnk.has-item {
   position: relative;
 }
@@ -101,8 +116,8 @@ div {
   width: 100%;
 }
 
-/* Flèche dans le <a> */
-.menu-lnk a::after {
+/* Arrow in <a> tag */
+.main-nav > .menu-lnk > a::after {
   content: "";
   position: absolute;
   top: 48%;
@@ -123,13 +138,11 @@ a, .btn, button {
   cursor: pointer;
 }
 
-
-
-/* menu right*/
+/* Right-side menu */
 .menu-item-right {
   flex: 1;
   -webkit-box-flex: 1;
-  gap:15px;
+  gap: 15px;
   margin: 0;
   padding: 0;
 }
@@ -143,20 +156,143 @@ a, .btn, button {
 .flex {
   display: -webkit-flex;
   flex-wrap: wrap;
-  box-sizing: border-box;}
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-    unicode-bidi: isolate;
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+}
+/*
+/* Shopall Menu Styling */
+.shopall, .home  {
+  height: 0;
+  width: 100vw;
+  transition: height 1s ease;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 76px; /* Position it below the navbar */
+  z-index: 1000000;
+  overflow: hidden;
+  display: flex; /* Using flex for managing column display */
+}
+
+.shopall.visible{
+  height: 50vh; /* Visible height when the div is active */
+}
+.home.visible {
+  height: 35vh; /* Visible height when the div is active */
+}
+
+.col-3 {
+  flex: 1; /* Each column takes equal width */
+  height: 100%; /* Ensure columns fill the height of the container */
+}
+
+/* Image Container Styling */
+.image-container {
+  display: flex;
+  justify-content: center;  /* Center the content horizontally */
+  align-items: center;      /* Center the content vertically */
+  height: 85%;
+  width: 100%;       
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Image Styling */
+img {
+  width: 120%;   /* Ensure the image doesn't overflow the container */
+  max-height: 100%;  /* Ensure the image doesn't overflow the container */
+  object-fit: cover;  /* Maintain aspect ratio while covering the container */
+  object-position: center; /* Center the image */
+}
+
+/* Shopall Text Styling */
+.shopall a {
+  font-family: Federo, sans-serif;     /* Font family */
+  border-bottom: 1px solid transparent;     /* Transparent border at the bottom */
+  transition: all 0.5s ease-in-out;         /* Smooth transition for all properties */
+  color: #111111;                           /* Text color */
+  text-decoration: none;                    /* Remove underline */
+  outline: none;                            /* Remove outline */
+  display: block; 
+  text-align: center;                       /* Center the text */
+  padding-top: 5px;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.shopall a:hover {
+  border-bottom: 1px solid #111111;        /* Change border to black on hover */
+}
+.home a ,.products a ,.pages a, .blogs a {
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+  padding: 0;
+  border-bottom: 1px solid transparent; /* Default border */
+  transition: all 0.5s ease-in-out 0s; /* Smooth transition for all properties */
+  font-family: 'Gothic A1', sans-serif; /* Updated font */
+  text-decoration: none; /* Remove underline */
+  color: #111111; /* Set text color */
+  outline: none; /* Remove outline */
+}
+
+.home a:hover , .products a:hover, .pages a:hover , .blogs a:hover{
+  border-bottom: 1px solid #111111; /* Border color on hover */
+  color: #000000; /* Text color on hover */
+}
+.home li , .products li ,.pages li , .blogs li  {
+  margin-bottom: 10px; /* Adds space between each list item */
+  font-size: 16px; /* Increase font size for better readability */
+}
+
+ul>li span {
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 600;
 }
 
 
+.img-col {
+  position: relative;
+  width: 90%;
+  display: block;
+  top: 10px;
+  height: 90%;
+}
+
+.products , .pages, .blogs{
+  height: 0;
+  width: 15vw;
+  transition: height 0.5s ease;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 50px;
+  z-index: 1000000;
+  overflow: hidden;
+  display: flex;
+}
+
+.products.visible{
+  height: 37vh;
+}
+
+.pages.visible{
+  height: 30vh;
+}
+.blogs.visible {
+  height: 14vh;
+}
 
 /***  works/home
 .menu-lnk {
