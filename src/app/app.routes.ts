@@ -8,9 +8,8 @@ import { ListArticleComponent } from './article/list-article/list-article.compon
 import { ProfilComponent } from './profil/profil.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CreateaccComponent } from './profil/createacc/createacc.component';
-import { AccounteComponent } from './pages/accounte/accounte.component'; 
+import { AccounteComponent } from './pages/accounte/accounte.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
-
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
