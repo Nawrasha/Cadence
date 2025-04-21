@@ -5,6 +5,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CreateaccComponent } from './profil/createacc/createacc.component';
 import { AccounteComponent } from './accounte/accounte.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { WishlistComponent2 } from './wishlist/wishlist.component2';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
