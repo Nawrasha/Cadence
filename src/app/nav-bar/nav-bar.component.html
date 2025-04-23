@@ -10,7 +10,7 @@
             (mouseout)="hideHome()"
             (mouseenter)="keepHomeOpen($event)"
               (mouseleave)="closeHome($event)">
-            <a href="#" class="dropdown-link">
+            <a class="dropdown-link">
               Home <span class="common-arrow"></span>
             </a>
           </li>
@@ -58,9 +58,9 @@
           (mouseenter)="keepPagesOpen($event)" 
           (mouseleave)="closePages($event)">
           <ul style="padding-left: 20px">
-            <li class=""><a href="">About Us</a></li>
+            <li><a [routerLink]="['/about-us']">About Us</a></li>
             <li class=""><a href="">Contact</a></li>             
-            <li class=""> <a href="">FAQ'S</a> </li>
+            <li> <a [routerLink]="['/faq']">FAQ'S</a> </li>
             <li class=""><a href="">Shipping And Return</a></li>
             <li class=""><a href="">Terms And Conditions</a></li>
             </ul>
@@ -81,7 +81,7 @@
           (mouseleave)="closeBlogs($event)">
           <ul style="padding-left: 20px">
             <li class=""><a href="">Blog Page</a></li>
-            <li class=""><a href="">Article Page</a></li>             
+            <li class=""><a [routerLink]="['/articlepage']">Article Page</a></li>             
             </ul>
           </div>
         </li>
@@ -138,22 +138,12 @@
 
 <!-- dropdown for shop all-->
 <div class="shopall" [ngClass]="{'visible': isShopAllVisible}" (mouseenter)="keepShopAllOpen($event)" (mouseleave)="closeShopAll($event)">
-  <div class="col-3">
-    <div class="image-container"><img src="//cadence-workdo.myshopify.com/cdn/shop/files/2148720019.jpg?v=1736486220" alt="megamenu-image" loading="lazy"></div>
-    <a href="/collections/ceramic-candle">Ceramic Candle</a>
+  <div class="col-3" *ngFor="let item of categories">
+    <div class="image-container">
+      <img [src]="'https:' + item.image" alt="{{ item.label }}" loading="lazy"></div>
+    <a [routerLink]="['/list-article/'+item.id]">{{ item.label }}</a>
   </div>
-  <div class="col-3">
-    <div class="image-container"><img src="//cadence-workdo.myshopify.com/cdn/shop/files/2148720016.jpg?v=1736486264" alt="megamenu-image" loading="lazy"></div>
-    <a href="/collections/geometric-candles">Geometric Candles</a>
-  </div>
-  <div class="col-3">
-    <div class="image-container"><img src="//cadence-workdo.myshopify.com/cdn/shop/files/there-is-candle-that-is-sitting-tray-table.jpg?v=1736487205" alt="megamenu-image" loading="lazy"></div>
-    <a href="/collections/glass-candles">Glass Candles</a>
-  </div>
-  <div class="col-3">
-    <div class="image-container" style="padding-right: 30px;"><img src="//cadence-workdo.myshopify.com/cdn/shop/files/three-pink-flowers-are-table-with-candle-middle.jpg?v=1736487234" alt="megamenu-image" loading="lazy"></div>
-    <a href="/collections/jar-candle">Jar Candle</a>
-  </div>
+
 </div>
 
 
@@ -162,19 +152,18 @@
   <div class="col-3">
     <ul>
       <li><span>Category Page</span></li>
-      <li><a href="/collections/ceramic-candle">Ceramic Candles</a></li>
-      <li><a href="/collections/geometric-candles">Geometric Candles</a></li>
-      <li><a href="/collections/glass-candles">Glass Candles</a></li>
-      <li><a href="/collections/jar-candle">Jar Candle</a></li>
+      <li *ngFor="let item of categories">
+        <a [routerLink]="['/list-article/'+item.id]">{{ item.label }}</a>
+      </li>
     </ul>
   </div>
   <div class="col-3">
     <ul style="margin-left: 0;">
       <li class="list-title"><span>Feature product</span></li>
       <li><a href="#">Product Video</a></li>
-      <li><a href="https://cadence-workdo.myshopify.com/products/soy-off-white-swirl-candle">Simple Product</a></li>
-      <li><a href="https://cadence-workdo.myshopify.com/products/rose-candle-jar-silicone">Product Countdown Timer</a></li>
-      <li><a href="https://cadence-workdo.myshopify.com/products/huge-medusa-candle">Product Color Swatch</a></li>
+      <li><a href="">Simple Product</a></li>
+      <li><a href="">Product Countdown Timer</a></li>
+      <li><a href="">Product Color Swatch</a></li>
     </ul>
   </div>
   <div class="col-3">

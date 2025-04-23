@@ -1,15 +1,26 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ServicesService } from '../services/services.service';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [ CommonModule,],
+  imports: [ RouterModule,CommonModule,],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
   isHomeVisible: boolean = false;
+  categories: any[] = [];
+  constructor(public services: ServicesService) {
+    this.getCategories()
+  }
 
+  async getCategories() {
+    await this.services.getCategories().then((data:any) => {
+      this.categories = data;
+    })
+  }
 // Display the home section
 showHome() {
   this.isHomeVisible = true;

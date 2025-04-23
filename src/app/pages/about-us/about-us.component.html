@@ -1,0 +1,63 @@
+<div class="common-banner-sec" style="background-image:url(//cadence-workdo.myshopify.com/cdn/shop/files/common-banner.png?v=1717741810);width: 100%;">
+  <div class="container">
+  <div class="common-banner-content text-center">
+    <div class="section-title">
+      <div class="subtitle">About us</div>
+    </div>
+    <div class="breadcrumbs">
+      <ul class="filter-cat flex align-center justify-center">
+         <li><a href="/">Home</a></li>
+         <li><a href="javascript:;">Pages</a></li>
+         <li><a href="javascript:;">About us</a></li>
+     </ul>
+   </div>
+  </div>
+</div>
+</div>
+
+<!-- First-->
+<div class="row pb pt pl " style="width: 100%;">
+  <div class="col-9" >
+    <div class="about-left-inner">
+      <div class="section-title">
+          <h2>At Cadence, we're not just passionate about candles; we're dedicated to curating                                    experiences that transform ordinary moments into extraordinary memories.</h2>
+          <p>Our journey began with a simple vision: to craft candles that inspire, uplift, and
+                        evoke a sense of tranquility. Each candle we create is a labor of love, meticulously
+                        hand-poured and infused with premium fragrances to envelop your space in a warm,
+                        inviting glow. Whether you're unwinding after a long day, setting the mood for a
+                        romantic evening, or simply seeking solace in solitude, our candles are here to
+                        enhance your moments and elevate your surroundings.</p>
+      </div>
+  </div>
+  </div>
+  <div class="col-3">
+      <img style="width: 100%;" src="//cadence-workdo.myshopify.com/cdn/shop/files/about1.png?v=1718253967" alt="about-image">
+  </div>
+</div>
+
+<!--second-->
+<div class="row about-full-img-sec pb pl " style="width: 100%;">
+  <div class="section-title">
+    <div class="subtitle">HEADING</div>
+    <h3>Discover the Cadence Story: Crafting Moments, Illuminating Memories</h3>
+  <p>Our commitment to sustainability extends beyond just our products; it's a core value that informs
+                  every aspect of our business. We strive to minimize our environmental footprint by sourcing
+                  eco-friendly materials, reducing waste in our production process, and supporting initiatives
+                  that promote conservation and responsible stewardship of our planet. By choosing Cadence, you're
+                  not only investing in premium candles; you're also supporting a commitment to sustainability and
+                  ethical practices.</p>
+  </div>
+  <div class="about-full-img" >
+    <img src="//cadence-workdo.myshopify.com/cdn/shop/files/about-full.png?v=1718175481" alt="about-full-img">
+</div>
+</div>
+
+<!--third-->
+<div class="row about-counter-sec pb pl pr" style="width: 100%;">
+  <div class="col-4" *ngFor="let item of counters">
+    <div class="counter-item">
+      <div #countEl class="counting">{{ item.start }}</div>
+      <p>{{ item.text }}</p>
+    </div>
+  </div>
+</div>

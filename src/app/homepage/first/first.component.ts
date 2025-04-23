@@ -1,8 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-first',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './first.component.html',
   styleUrl: './first.component.css'
 })
