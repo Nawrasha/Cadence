@@ -92,25 +92,34 @@ h2 {
     position: relative;
 }
 
+
+    
 .btn {
-    padding: 12px 22px;
-    color:#111111;
-    background-color:#d3b5b4;
-    border: 1px solid #d3b5b4;
-    font-size: 16px;
+    position: relative;
+    display: inline-block;
+    padding: 7px 26px;
+    font-size: 18px;
+    text-align: center;
     font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    color: #111;
+    cursor: pointer;
+    overflow: hidden;
+    background: #d3b5b4;
+    border: 2px solid #d3b5b4;
+    z-index: 1;
+    border-radius: 0;
+    font-family: Gothic A1, sans-serif;
+    white-space: nowrap;
 }
 
+
 .btn:hover {
-    background-color: #111111;
+    background-color: #000000;
+    border: 2px solid #000000;
     color: #ffffff;
 }
+
 .main-banner-sec::after {
     content: '';
     position: absolute;

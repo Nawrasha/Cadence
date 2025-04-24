@@ -1,34 +1,90 @@
 <div class="main-navigationbar" style="background-color: rgb(255, 255, 255);">
   <div class="container">
-    <div class="main-navigationbar-row flex justify-between align-center">
+    <div class="main-navigationbar-row justify-between align-center">
       <div class="menu-item-left menu-items-col">
         <ul class="main-nav flex align-center">
           <!-- Menu Home avec dropdown -->
-          <li class="menu-lnk has-item dropdown">
-            <a href="#" class="dropdown-link">
+          <li class="menu-lnk has-item dropdown"
+            (mouseover)="showHome()"
+            (mouseout)="hideHome()"
+            (mouseenter)="keepHomeOpen($event)"
+              (mouseleave)="closeHome($event)">
+            <a class="dropdown-link">
               Home <span class="common-arrow"></span>
             </a>
           </li>
-          <li class="menu-lnk has-item">
-            <a href="#">
-              Shop All <span class="common-arrow"></span>
-            </a>
-          </li>
-          <li class="menu-lnk has-item">
-            <a href="#">
-              Products <span class="common-arrow"></span>
-            </a>
-          </li>
-          <li class="menu-lnk has-item">
-            <a href="#">
-              Pages <span class="common-arrow"></span>
-            </a>
-          </li>
-          <li class="menu-lnk has-item">
-            <a href="#">
-              Blogs <span class="common-arrow"></span>
-            </a>
-          </li>
+          
+          <li class="menu-lnk has-item" style="position: relative;" 
+            (mouseover)="showShopAll()" 
+            (mouseout)="hideShopAll()" 
+            (mouseenter)="keepShopAllOpen($event)"
+            (mouseleave)="closeShopAll($event)">
+          <a href="#">
+            Shop All <span class="common-arrow"></span>
+          </a>
+          <li class="menu-lnk has-item dropdown"
+            (mouseover)="showProducts()"
+            (mouseout)="hideProducts()"
+            (mouseenter)="keepProductsOpen($event)"
+            (mouseleave)="closeProducts($event)">
+          <a href="#" class="dropdown-link">
+            Products <span class="common-arrow"></span>
+          </a>
+          <!-- Products Dropdown -->
+          <div class="products" [ngClass]="{'visible': isProductsVisible}" 
+          (mouseenter)="keepProductsOpen($event)" 
+          (mouseleave)="closeProducts($event)">
+          <ul style="padding-left: 20px;width: 90%;">
+            <li class=""><a href="/products/beagle-paw-ceramic-candle-warmer">Beagle Paw Ceramic Candle Warmer</a></li>
+            <li class=""><a href="/products/curved-candle-jar-cement">Curved Candle Jar Cement</a></li>             
+            <li class=""> <a href="/products/huge-medusa-candle">Huge Medusa Candle</a> </li>
+            <li class=""><a href="/products/mermaid-candle">Mermaid Candle</a></li>
+            <li class=""><a href="/products/peony-candle-set-of-3">Peony Candle Set of 3</a></li>
+            </ul>
+          </div>
+        </li>
+        
+        <li class="menu-lnk has-item dropdown"
+            (mouseover)="showPages()"
+            (mouseout)="hidePages()"
+            (mouseenter)="keepPagesOpen($event)"
+            (mouseleave)="closePages($event)">
+          <a href="#" class="dropdown-link">
+            Pages <span class="common-arrow"></span>
+          </a>
+          <!-- Pages Dropdown -->
+          <div class="pages" [ngClass]="{'visible': isPagesVisible}" 
+          (mouseenter)="keepPagesOpen($event)" 
+          (mouseleave)="closePages($event)">
+          <ul style="padding-left: 20px">
+            <li><a [routerLink]="['/about-us']">About Us</a></li>
+            <li class=""><a href="">Contact</a></li>             
+            <li> <a [routerLink]="['/faq']">FAQ'S</a> </li>
+            <li class=""><a href="">Shipping And Return</a></li>
+            <li class=""><a href="">Terms And Conditions</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="menu-lnk has-item dropdown"
+            (mouseover)="showBlogs()"
+            (mouseout)="hideBlogs()"
+            (mouseenter)="keepBlogsOpen($event)"
+            (mouseleave)="closeBlogs($event)">
+          <a href="#" class="dropdown-link">
+            Blogs <span class="common-arrow"></span>
+          </a>
+          <!-- Blogs Dropdown -->
+          <div class="blogs" [ngClass]="{'visible': isBlogsVisible}" 
+          (mouseenter)="keepBlogsOpen($event)" 
+          (mouseleave)="closeBlogs($event)">
+          <ul style="padding-left: 20px">
+            <li class=""><a href="">Blog Page</a></li>
+            <li class=""><a [routerLink]="['/articlepage']">Article Page</a></li>             
+            </ul>
+          </div>
+        </li>
+
         </ul>
       </div>
       <div class="logo-col">
@@ -78,6 +134,51 @@
     </div>
   </div>
 </div>
+
+<!-- dropdown for shop all-->
+<div class="shopall" [ngClass]="{'visible': isShopAllVisible}" (mouseenter)="keepShopAllOpen($event)" (mouseleave)="closeShopAll($event)">
+  <div class="col-3" *ngFor="let item of categories">
+    <div class="image-container">
+      <img [src]="'https:' + item.image" alt="{{ item.label }}" loading="lazy"></div>
+    <a [routerLink]="['/list-article/'+item.id]">{{ item.label }}</a>
+  </div>
+
+</div>
+
+
+<!-- dropdown for home -->
+<div class="home" [ngClass]="{'visible': isHomeVisible}" (mouseenter)="keepHomeOpen($event)" (mouseleave)="closeHome($event)">
+  <div class="col-3">
+    <ul>
+      <li><span>Category Page</span></li>
+      <li *ngFor="let item of categories">
+        <a [routerLink]="['/list-article/'+item.id]">{{ item.label }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-3">
+    <ul style="margin-left: 0;">
+      <li class="list-title"><span>Feature product</span></li>
+      <li><a href="#">Product Video</a></li>
+      <li><a href="">Simple Product</a></li>
+      <li><a href="">Product Countdown Timer</a></li>
+      <li><a href="">Product Color Swatch</a></li>
+    </ul>
+  </div>
+  <div class="col-3">
+    <a href="" class="d-block img-col"> 
+      <img loading="lazy" src="//cadence-workdo.myshopify.com/cdn/shop/files/megamenu-1.png?v=1718259405" alt="menubaner">
+    </a>
+  </div>
+  <div class="col-3">
+    <a href="" class="d-block img-col"> 
+      <img loading="lazy" src="//cadence-workdo.myshopify.com/cdn/shop/files/megamenu-2.png?v=1718259405" alt="menubaner">
+  </a>
+  </div>
+</div>
+
+
+
 
 <!--- Home 
 <ul>

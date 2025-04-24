@@ -1,12 +1,132 @@
+.newsletter-bg-1 {
+  top: -40px;
+  left: 240px;
+  position: absolute;
+  z-index:2;
+}
+.newsletter-bg-2 {
+  top: -30px;
+  right: 250px;
+  position: absolute;
+  z-index: 2;
+}
+.section-title {
+  margin-bottom: 30px;
+}
+
+.text-center {
+  text-align: center;
+}
+.subtitle {
+  font-size: 22px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+  font-family: Delicious Handrawn, cursive;
+  color: #555555;
+}
+.section-title.line .h22 {
+  padding-bottom: 8px;
+}
+
+.section-title .h22 {
+  text-transform: capitalize;
+  position: relative;
+  color: #111111;
+  font-size: 46px;
+  font-weight: 400;
+}
+.section-title.line h2:before{
+  position: absolute;
+  content: "";
+  bottom: 0;
+  height: 2px;
+  width: 102px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+}
+
+.subscribe-form-wrapper {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex; /* Use flexbox to align items inline */
+  align-items: center;
+}
+.subscribe-form-wrapper .input-wrapper {
+  position: relative;
+  flex-grow: 1; /* Ensure input takes up remaining space */
+}
+.subscribe-form-wrapper input:focus {
+  outline: none; /* Removes the outline when focused */
+  border-bottom: 2px solid #e4e4e4; /* Retain only bottom border on focus */
+}
+.subscribe-form-wrapper input {
+  border: 0;
+  border-bottom: 2px solid #e4e4e4;
+  padding: 18px 35px 12px 0;
+  width: 100%;
+}
+.subscribe-btn {
+  position: relative;
+  border: 0; /* Remove button border */
+  background: none; /* Remove button background */
+  padding: 12px 20px; /* Adjust padding for button */
+  cursor: pointer;
+  display: inline-block; /* Keep button inline with input */
+  height: auto;
+}
+input:not([type=submit]), input:not([type=checkbox]), input:not([type=button]), input:not([type=radio]){
+  position: relative;
+  display: block;
+    width: 100%;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    color: black;
+}
+input {
+  font-family:Gothic A1, sans-serif;
+}
+.newsletter-inner .subscribe-form-wrapper .subscribe-btn {
+  right: 0;
+  top: 50%;
+  height: 70%;
+  transform: translateY(-50%);
+  padding: 0;
+    border: 0;
+    background: none;
+}
+button {
+  box-shadow: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: all .5s ease-in-out 0s;
+}
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+h2{
+  font-family: Federo, sans-serif;
+  font-size: 26px;
+  color: #d3b5b4;
+}
 .footer {
   background-color: #111;
   color: #d9c8a9;
-  padding: 40px 20px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 300px;
+  font-family: Gothic A1, sans-serif;
+  font-size: 16px;
   margin-top: auto;
+  height: 110vh;
 }
 
-.footer-container {
+.footer-container{
+  padding-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -72,7 +192,7 @@
 
 .footer-bottom {
   border-top: 1px solid #333;
-  margin-top: 30px;
+  margin-top: 60px;
   padding-top: 20px;
   text-align: center;
   color: #8d8d8d;
@@ -92,15 +212,7 @@
   opacity: 1;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
 
-body {
-  display: flex;
-  flex-direction: column;
-}
 
 app-root {
   flex: 1;
@@ -108,8 +220,5 @@ app-root {
   flex-direction: column;
 }
 
-.logo {
-  width: 140px; /* Adjust as needed */
-  margin-bottom: 15px;
-  display: block;
-}
+
+

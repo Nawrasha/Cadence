@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="collection-card">
+                <div class="collection-card-image">
+                    <a href="/collections/all-product" class="collection-image" tabindex="0">
+                        <img src="//cadence-workdo.myshopify.com/cdn/shop/files/1.png?v=1717577753" alt="All Product" loading="lazy">
+                    </a>
+                </div>
+                <div class="collection-content">
+                    <a href="/collections/all-product" class="btn" tabindex="0">All Product</a>
+                 </div>
+            </div>
+        </div>
+
+        <div class="col-3" *ngFor="let categorie of categories">
+            <div class="collection-card">
+                <div class="collection-card-image">
+                    <a href="/collections/ceramic-candle" class="collection-image" tabindex="0">
+                    <img src="{{ categorie.image }}" alt="ceramic candle" loading="lazy">
+                      </a>
+                </div>
+                <div class="collection-content">
+                    <a href="/collections/ceramic-candle" class="btn" tabindex="0">{{ categorie.label}}</a>
+                 </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
