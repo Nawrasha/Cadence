@@ -2,19 +2,27 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';  
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component'; 
+import { HomeComponent } from './homepage/home/home.component'; 
 import { ProfilComponent } from './profil/profil.component';  
 import { CreateaccComponent } from './profil/createacc/createacc.component';
-import { AccounteComponent } from './accounte/accounte.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
+import { AccounteComponent } from './pages/accounte/accounte.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
-
-import { routes } from './app.routes';  
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, NavBarComponent, FooterComponent, HomeComponent, ProfilComponent , CreateaccComponent , AccounteComponent , WishlistComponent , CartComponent] , 
+  imports: [
+    RouterModule, 
+    NavBarComponent, 
+    FooterComponent,
+    HomeComponent, 
+    ProfilComponent,
+    CreateaccComponent,
+    AccounteComponent,
+    WishlistComponent,
+    CartComponent
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
