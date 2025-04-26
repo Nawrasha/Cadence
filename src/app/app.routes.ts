@@ -8,8 +8,9 @@ import { ListArticleComponent } from './article/list-article/list-article.compon
 import { ProfilComponent } from './profil/profil.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CreateaccComponent } from './profil/createacc/createacc.component';
-import { AccounteComponent } from './pages/accounte/accounte.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { AccounteComponent } from './pages/accounte/accounte.component';
+import { CartComponent } from './cart/cart.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,9 @@ export const appRoutes: Routes = [
   { path: 'profile', component: ProfilComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'createacc', component: CreateaccComponent },
-  { path: 'account', component: AccounteComponent },
   { path: 'wishlist', component: WishlistComponent }
+  { path: 'contact' , component: ContactComponent},
+  { path: 'createacc', component: CreateaccComponent},
+  { path: 'account', component: AccounteComponent},
+  { path: 'cart' , component: CartComponent},
 ];
