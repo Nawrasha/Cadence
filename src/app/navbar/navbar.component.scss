@@ -1,0 +1,13 @@
+.cart-icon {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #333;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #D5BEB9;
+  }
+} 

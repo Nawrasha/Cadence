@@ -5,6 +5,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CreateaccComponent } from './profil/createacc/createacc.component';
 import { AccounteComponent } from './accounte/accounte.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { CartComponent } from './cart/cart.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,5 +13,6 @@ export const routes: Routes = [
   { path: 'contact' , component: ContactComponent},
   { path: 'createacc', component: CreateaccComponent},
   { path: 'account', component: AccounteComponent},
-  { path: 'wishlist' , component: WishlistComponent}
+  { path: 'wishlist' , component: WishlistComponent},
+  { path: 'cart' , component: CartComponent},
 ];

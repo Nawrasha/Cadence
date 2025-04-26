@@ -7,12 +7,14 @@ import { ProfilComponent } from './profil/profil.component';
 import { CreateaccComponent } from './profil/createacc/createacc.component';
 import { AccounteComponent } from './accounte/accounte.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { CartComponent } from './cart/cart.component';
+
 import { routes } from './app.routes';  
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, NavBarComponent, FooterComponent, HomeComponent, ProfilComponent , CreateaccComponent , AccounteComponent , WishlistComponent],  
+  imports: [RouterModule, NavBarComponent, FooterComponent, HomeComponent, ProfilComponent , CreateaccComponent , AccounteComponent , WishlistComponent , CartComponent] , 
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
