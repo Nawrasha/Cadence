@@ -22,13 +22,15 @@
         </div>
   
         <div class="cart-items">
-          <div class="cart-item" *ngFor="let item of shop.getCart()">
+          <div class="cart-item" *ngFor="let item of cartItems">
             <img [src]="item.image" [alt]="item.name" />
             <div class="item-details">
               <p class="product-name">{{ item.name }}</p>
               <p class="product-price">${{ item.price }}</p>
               <div class="quantity-controls">
+                <button (click)="decrementQuantity(item)">-</button>
                 <span>{{ item.quantity }}</span>
+                <button (click)="incrementQuantity(item)">+</button>
               </div>
             </div>
             <button class="delete-btn" (click)="removeItem(item.id)">
@@ -36,8 +38,7 @@
             </button>
           </div>
         </div>
-  
-        <div class="recommended-products">
+        
           <h3>You may also like</h3>
           <div class="product-card">
             <img src="//cadence-workdo.myshopify.com/cdn/shop/files/1_f4218d57-9fee-4269-8d56-0528f104780e_300x300.png?v=1717582382" alt="Rose Candle Jar Silicone">
@@ -46,7 +47,6 @@
               <p class="price">$11.00</p>
             </div>
           </div>
-        </div>
         
         <div class="cart-summary">
           <div class="summary-row">
@@ -58,8 +58,7 @@
             <span>${{ subtotal | number:'1.2-2' }}</span>
           </div>
           <div class="cart-actions">
-            <button class="view-cart-btn" routerLink="/cart" (click)="close()">View Cart</button>
-            <button class="checkout-btn">checkout</button>
+            <button class="checkout-btn"(click)="close()">chekout</button>
           </div>
         </div>
       </div>

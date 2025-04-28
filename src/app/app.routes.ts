@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './homepage/home/home.component'; 
+import { HomeComponent } from './homepage/home/home.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { ArticlepageComponent } from './pages/articlepage/articlepage.component';
@@ -22,9 +22,8 @@ export const appRoutes: Routes = [
   { path: 'profile', component: ProfilComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'createacc', component: CreateaccComponent },
-  { path: 'wishlist', component: WishlistComponent }
-  { path: 'contact' , component: ContactComponent},
-  { path: 'createacc', component: CreateaccComponent},
-  { path: 'account', component: AccounteComponent},
-  { path: 'cart' , component: CartComponent},
+  { path: 'account', component: AccounteComponent },
+  { path: 'wishlist', component: WishlistComponent },
+  { path: 'cart', component: CartComponent }
 ];
+

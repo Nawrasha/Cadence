@@ -1,15 +1,7 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'; // <-- à rajouter
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ShopService } from '../shared/shop.service';
-
-interface CartItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-}
 
 @Component({
   selector: 'app-cart',
@@ -20,15 +12,6 @@ interface CartItem {
 })
 export class CartComponent {
   isOpen = true;
-  cartItems: CartItem[] = [
-    {
-      id: 1,
-      name: 'Rose Candle Peony',
-      price: 20.00,
-      quantity: 1,
-      image: '//cadence-workdo.myshopify.com/cdn/shop/files/1_92ff487b-7102-4a5e-baf5-c79241100b89_80x120.png?v=1717583166'
-    }
-  ];
 
   constructor(public shop: ShopService) {}
 
@@ -43,18 +26,14 @@ export class CartComponent {
   }
 
   toggle() {
-    if (this.isOpen) {
-      this.close();
-    } else {
-      this.open();
-    }
+    this.isOpen ? this.close() : this.open();
   }
 
-  incrementQuantity(item: CartItem) {
+  incrementQuantity(item: any) {  // <-- ici item est de type CartItem
     item.quantity++;
   }
 
-  decrementQuantity(item: CartItem) {
+  decrementQuantity(item: any) {
     if (item.quantity > 1) {
       item.quantity--;
     }
@@ -64,11 +43,15 @@ export class CartComponent {
     this.shop.removeFromCart(productId);
   }
 
-  get totalItems(): number {
-    return this.cartItems.reduce((total, item) => total + item.quantity, 0);
+  get cartItems() {
+    return this.shop.getCart();  // 👈 récupère dynamiquement
   }
 
-  get subtotal(): number {
-    return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  get totalItems(): number {
+    return this.cartItems.reduce((total, item) => total + (item.quantity ?? 0), 0);
   }
+  
+  get subtotal(): number {
+    return this.cartItems.reduce((total, item) => total + (item.price * (item.quantity ?? 0)), 0);
+  }  
 }

@@ -175,7 +175,7 @@ h1:before{
     color: white;
   }
 
-  .product-sidebar-icons {
+  .product-actions {
     position: absolute;
     top: 13%;
     right: -35px;
@@ -189,7 +189,7 @@ h1:before{
     z-index: 1;
   }
 
-  .product-card:hover .product-sidebar-icons {
+  .product-card:hover .product-actions {
     opacity: 1;
     pointer-events: auto;
   }

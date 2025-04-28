@@ -20,7 +20,6 @@ export class CreateaccComponent {
   };
 
   onSubmit() {
-    // Handle form submission here
     console.log('Form submitted:', this.formData);
   }
 }

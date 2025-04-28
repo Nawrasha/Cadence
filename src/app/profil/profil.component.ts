@@ -19,11 +19,9 @@ export class ProfilComponent {
 
   login() {
     console.log('Logging in with:', this.loginForm);
-    // You can add login logic here
   }
 
   createAccount() {
     console.log('Create account clicked');
-    // You can add account creation logic here
   }
 }
