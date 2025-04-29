@@ -222,3 +222,15 @@ app-root {
 
 
 
+
+/* Enlever le style par défaut des liens */
+a {
+  text-decoration: none; 
+  color: inherit;         
+  font-weight: normal;   
+}
+
+a:hover {
+  text-decoration: none; 
+  color: inherit;         
+}

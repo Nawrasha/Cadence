@@ -240,7 +240,7 @@ img {
   font-weight: 500;
   padding: 0;
   border-bottom: 1px solid transparent; /* Default border */
-  transition: all 0.5s ease-in-out 0s; /* Smooth transition for all properties */
+  transition: all 0.4s ease-in-out 0s; /* Smooth transition for all properties */
   font-family: 'Gothic A1', sans-serif; /* Updated font */
   text-decoration: none; /* Remove underline */
   color: #111111; /* Set text color */
@@ -252,7 +252,7 @@ img {
   color: #000000; /* Text color on hover */
 }
 .home li , .products li ,.pages li , .blogs li  {
-  margin-bottom: 10px; /* Adds space between each list item */
+  margin-bottom: 13px; /* Adds space between each list item */
   font-size: 16px; /* Increase font size for better readability */
 }
 
@@ -274,7 +274,7 @@ ul>li span {
 .products , .pages, .blogs{
   height: 0;
   width: 15vw;
-  transition: height 0.5s ease;
+  transition: height 0.4s ease;
   background-color: rgb(255, 255, 255);
   position: absolute;
   top: 50px;
@@ -288,63 +288,115 @@ ul>li span {
 }
 
 .pages.visible{
-  height: 30vh;
+  height: 27vh;
 }
 .blogs.visible {
-  height: 14vh;
+  height: 12vh;
 }
 
-/***  works/home
-.menu-lnk {
-    position: relative;
-    list-style: none;
-    display: inline-block;
-  }
-  
-  .menu-lnk > a {
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-    position: relative;
-  }
-  
-  .common-arrow {
-    margin-left: 5px;
-    border: solid #555;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 4px;
-    transform: rotate(45deg); 
-    transition: transform 0.3s ease;
-  }
-  
-  
-  .menu-lnk:hover .common-arrow {
-    transform: rotate(-135deg);
-  }
-  
-  
-  .menu-lnk:hover .mega-menu {
-    display: block;
-  }
-  
-  .menu-lnk a::after {
-    content: "";
-    position: absolute;
-    bottom: -3px; 
-    left: 0;
-    width: 0;
-    height: 2px; 
-    background-color: #333;
-    transition: width 0.3s ease;
-  }
-  
 
-  .menu-lnk:hover a::after {
-    width: 100%;
+ /* === Dropdown container === */
+.search-dropdown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 33vh;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 2rem 1rem;
+  z-index: 1000;
+  animation: slideDown 0.4s ease forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
   }
-  
- **/
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #ff0000;
+}
+
+/* === Search content === */
+.search-content {
+  text-align: center;
+}
+
+.search-content h2 {
+  font-size: 36px;
+  margin-bottom: 1rem;
+  color: #333;
+  font-family: Federo, sans-serif;
+  color: black;
+}
+
+/* Wrapper pour l'input + l'icône */
+.search-wrapper {
+  position: relative;
+  width: 1000px;
+}
+
+/* Input */
+.search-input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: transparent;
+  padding: 0.5rem 2.5rem 0.5rem 0.5rem; /* Espace à droite pour l'icône */
+  font-size: 1rem;
+  text-align: left;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.search-input:focus {
+  border-bottom-color: #007bff;
+}
+
+/* Icone */
+.search-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.search-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #111;
+}

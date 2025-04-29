@@ -10,6 +10,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { CreateaccComponent } from './profil/createacc/createacc.component';
 import { AccounteComponent } from './pages/accounte/accounte.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { ShippingComponent } from './pages/shipping/shipping.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,5 +24,7 @@ export const appRoutes: Routes = [
   { path: 'contact' , component: ContactComponent},
   { path: 'createacc', component: CreateaccComponent},
   { path: 'account', component: AccounteComponent},
-  { path: 'wishlist' , component: WishlistComponent}
+  { path: 'wishlist' , component: WishlistComponent},
+  { path: 'shipping' , component: ShippingComponent},
+  { path: 'cart', component: CartComponent }
 ];

@@ -1,3 +1,28 @@
+
+<section class="common-banner-sec" style="background-image:url(//cadence-workdo.myshopify.com/cdn/shop/files/common-banner.png?v=1717741810);">
+  <div class="containerr">
+    <div class="common-banner-content text-center">
+
+      <div class="section-title">
+        <div class="subtitle" style="color: white; font-size: 18px;">{{ categoryLabel }}</div>
+      </div>
+
+      <div class="breadcrumbs">
+        <ul class="filter-cat flex align-center justify-center">
+          <li>
+            <a  [routerLink]="['']" style="color: white; text-decoration:none;">Home</a>
+            <span style="margin: 0 5px;">></span>
+            <a href="/account" style="color: white; text-decoration:none;">{{ categoryLabel }}</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
 <div class="row" style="margin: 10px 0px;">
   <div class="col-3" style="padding: 10px;">
     <div class="container" style="padding: 20px;background-color: #f8f9fa;">
@@ -10,9 +35,9 @@
           </summary>
           <div id="Facet-1-template--23995115864364__product-grid" class="facets__display pro-itm-inner acnav-list">
             <div class="facets__header">
-              <span class="facets__selected no-js-hidden">0 selected</span>
+              <span class="facets__selected no-js-hidden">{{ selectedAvailabilityCount }} selected</span>
 
-              <a routerLinkActive="router-link-active" class="facets__reset link" role="button">
+              <a routerLinkActive="router-link-active" class="facets__reset link" role="button"  (click)="resetAvailability()">
                 Reset
               </a>
             </div>
@@ -21,7 +46,9 @@
               <li class="list-menu__item facets__item ">
                 <label for="Filter-Availability-1" class="flex facet-checkbox">
                   <input type="checkbox" name="filter.v.availability" class="color_1" value="1"
-                    id="Filter-Availability-1">
+                    id="Filter-Availability-1"
+                    [(ngModel)]="inStockSelected" 
+                    (change)="filter()">
                   <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
                     <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
                   </svg>
@@ -32,14 +59,16 @@
                   </svg>
                   <div class="color-name">
                     In stock
-                    <span class="color-count">4</span>
+                    <span class="color-count">{{ inStockCount }}</span>
                   </div>
                 </label>
               </li>
               <li class="list-menu__item facets__item ">
                 <label for="Filter-Availability-2" class="flex facet-checkbox">
                   <input type="checkbox" name="filter.v.availability" class="color_0" value="0"
-                    id="Filter-Availability-2">
+                    id="Filter-Availability-2"
+                    [(ngModel)]="outOfStockSelected" 
+                    (change)="filter()">
                   <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
                     <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
                   </svg>
@@ -50,7 +79,7 @@
                   </svg>
                   <div class="color-name">
                     Out of stock
-                    <span class="color-count">4</span>
+                    <span class="color-count">{{ outOfStockCount }}</span>
                   </div>
                 </label>
               </li>
@@ -70,7 +99,7 @@
           <div id="Facet-2-template--23995115864364__product-grid" class="facets__display pro-itm-inner acnav-list">
             <div class="facets__header"><span class="facets__selected price-header">The highest price is $21.00</span>
               <div>
-                <a href="/collections/ceramic-candle?sort_by=manual" class="facets__reset link" role="button">
+                <a  class="facets__reset link" role="button" (click)="resetPrice()">
                   Reset
                 </a>
               </div>
@@ -97,79 +126,60 @@
           </summary>
           <div id="Facet-3-template--23995115864364__product-grid" class="facets__display pro-itm-inner acnav-list">
             <div class="facets__header">
-              <span class="facets__selected no-js-hidden">0 selected</span>
-              <a href="/collections/ceramic-candle?sort_by=manual" class="facets__reset link" role="button">
+              <span class="facets__selected no-js-hidden">{{ selectedBrandsCount }} selected</span>
+              <a (click)="resetBrands()"  class="facets__reset link" role="button">
                 Reset
               </a>
             </div>
 
             <ul class="facets__list list-unstyled " role="list">
-              <li class="list-menu__item facets__item ">
-                <label for="Filter-Brand-1" class="flex facet-checkbox">
-                  <input type="checkbox" name="filter.p.vendor" class="color_harlem" value="Harlem" id="Filter-Brand-1">
+              <li class="list-menu__item facets__item " *ngFor="let brand of brands; let i = index">
+                <label [for]="'Filter-Brand-' + i" class="flex facet-checkbox">
+                  <input type="checkbox" name="filter.p.vendor" class="color_harlem" [value]="brand" 
+                         [id]="'Filter-Brand-' + i" 
+                         [(ngModel)]="selectedBrands[brand]" 
+                         (change)="filter()">
                   <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
                     <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
                   </svg>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-check">
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       class="feather feather-check">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   <div class="color-name">
-                    Harlem
-                    <span class="color-count">5</span>
+                    {{ brand }}
+                    <span class="color-count">{{ getBrandProductCount(brand) }}</span>
                   </div>
                 </label>
               </li>
             </ul>
+            
           </div>
         </details>
 
 
-        <details id="Details-4-template--23995115864364__product-grid"
-          class="product-widget disclosure-has-popup facets__disclosure js-filter" data-index="4" open="">
-          <summary class="facets__summary caption-large focus-offset pro-itm">
-            <div class="acnav-label">Color</div>
-          </summary>
-          <div id="Facet-4-template--23995115864364__product-grid" class="facets__display pro-itm-inner acnav-list">
-            <div class="facets__header">
-              <span class="facets__selected no-js-hidden">0 selected</span>
+        <details id="Details-4-template--23995115864364__product-grid" class="product-widget disclosure-has-popup facets__disclosure js-filter" data-index="4" open="">
+  <summary class="facets__summary caption-large focus-offset pro-itm">
+    <div class="acnav-label">Color</div>
+  </summary>
+  <div id="Facet-4-template--23995115864364__product-grid" class="facets__display pro-itm-inner acnav-list">
+    <div class="facets__header">
+      <span class="facets__selected no-js-hidden">{{ selectedColorsCount }} selected</span>
+      <a href="javascript:void(0);" class="facets__reset link" role="button" (click)="resetColors()">Reset</a>
+    </div>
 
-              <a href="/collections/ceramic-candle?sort_by=manual" class="facets__reset link" role="button">
-                Reset
-              </a>
-            </div>
+    <ul class="facets__list list-unstyled facets-color-main" role="list">
+      <li class="facets-color" *ngFor="let color of colors">
+        <label [style.background-color]="color" [for]="'Filter-Color-' + color" class="color-label" [ngClass]="{ 'selected': selectedColors[color] }"></label>
+        <input type="checkbox" name="filter.v.option.color" [value]="color" 
+               [id]="'Filter-Color-' + color" 
+               [(ngModel)]="selectedColors[color]" (change)="filter()">
+      </li>
+    </ul>
+  </div>
+</details>
 
-            <ul class="facets__list list-unstyled facets-color-main" role="list">
-              <li class="facets-color">
-                <label style="background-color: black;" for="Filter-Color-1" class="color-label"></label>
-                <input type="checkbox" name="filter.v.option.color" value="Black" id="Filter-Color-1" hidden>
-              </li>
-
-              <li class="facets-color">
-                <label style="background-color: blue;" for="Filter-Color-2" class="color-label"></label>
-                <input type="checkbox" name="filter.v.option.color" value="Blue" id="Filter-Color-2" hidden>
-              </li>
-
-              <li class="facets-color">
-                <label style="background-color: brown;" for="Filter-Color-3" class="color-label"></label>
-                <input type="checkbox" name="filter.v.option.color" value="Brown" id="Filter-Color-3" hidden>
-              </li>
-
-              <li class="facets-color">
-                <label style="background-color: orange;" for="Filter-Color-4" class="color-label"></label>
-                <input type="checkbox" name="filter.v.option.color" value="Orange" id="Filter-Color-4" hidden>
-              </li>
-
-              <li class="facets-color">
-                <label style="background-color: white; border: 1px solid #ccc;" for="Filter-Color-5"
-                  class="color-label"></label>
-                <input type="checkbox" name="filter.v.option.color" value="White" id="Filter-Color-5" hidden>
-              </li>
-            </ul>
-
-          </div>
-        </details>
 
         <details id="Details-5-template--23995115864364__product-grid"
           class="product-widget disclosure-has-popup facets__disclosure js-filter" data-index="5" open="">
@@ -179,7 +189,7 @@
           <div id="Facet-5-template--23995115864364__product-grid" class="facets__display pro-itm-inner acnav-list">
             <div class="facets__header">
               <span class="facets__selected no-js-hidden">0 selected</span>
-              <a href="/collections/ceramic-candle?sort_by=manual" class="facets__reset link" role="button">
+              <a  class="facets__reset link" role="button">
                 Reset
               </a>
             </div>
@@ -251,7 +261,7 @@
     <div class="row" *ngFor="let item of productsFiltred"
       style="height:274px;margin: 0;top: 20px;background-color: #f8f9fa;margin-bottom:30px;">
       <div class="col-3" style="padding: 20px;height:100%">
-        <a style="display: block; height: 100%;" href="/products/beagle-paw-ceramic-candle-warmer"
+        <a style="display: block; height: 100%;" 
           title="Beagle Paw Ceramic Candle Warmer" class="img-wrapper product__media-item"
           data-media-id="template--23995115864364__product-grid-9415367000364-38463346180396" tabindex="0">
           <img loading="lazy" class="default-img"
@@ -264,7 +274,7 @@
             <div class="pro-label pro-sale"> New</div>
             <div class="pro-label pro-discount" *ngIf="item.remise > 0">-{{ item.remise }}%</div>
           </div>
-          <h3><a href="/products/beagle-paw-ceramic-candle-warmer">{{item.title}}</a></h3>
+          <h3><a>{{item.title}}</a></h3>
           <p>
             {{item.description}}
           </p>
@@ -299,7 +309,7 @@
               </label>
             </div>
 
-            <!-- Compare Button -->
+            <!-- Compare Button 
             <div class="pro-btn pro-compare">
               <label>
                 <span class="compare-label compare-btn">
@@ -323,9 +333,9 @@
                 </span>
               </label>
             </div>
-
+         --->
             <!-- Quick View Button -->
-            <div class="pro-btn">
+            <div class="pro-btn" style="margin-right: -40px;">
               <button (click)="toggleQuickView(item)" class="qv-btn quickview-btn">
                 <div class="svg-container">
                   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
@@ -376,12 +386,12 @@
                     <div class="section-title">
                       <div class="subtitle">Harlem</div>
                       <h3>
-                        <a href="/products/beagle-paw-ceramic-candle-warmer">{{item.title}}</a>
+                        <a >{{item.title}}</a>
                       </h3>
                     </div>
                     <div class="no-js-hidden qv-price price" role="status">
                       <ins class="price-item--regular">${{ item.price - (item.price * item.remise / 100) }}</ins>
-                      <del class="price-item--sale" *ngIf="item.remise > 0">${{ item.price }} </del>
+                      <del class="price-item--sale" *ngIf="item.remise > 0">${{ item.price }}</del>
                     </div>
                     <div class="quick-product-dis">{{item.description}}</div>
                     <div class="product-actions">
@@ -392,9 +402,8 @@
                         <button (click)="increaseQuantity()" class="qty-btn">+</button>
                       </div>
                       <!-- Add to Cart Button -->
-                      <button type="submit" name="add" class="cart-btn product-form__submit" aria-label="Add to Cart">
+                      <button  type="submit" name="add" class="cart-btn product-form__submit" aria-label="Add to Cart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-                          <!-- (icon paths here, same as your SVG) -->
                         </svg>
                         <span class="bt-tooltip-content">Add to Cart</span>
                       </button>
@@ -418,7 +427,7 @@
         </div>
 
 
-        <button type="submit" name="add" class="cart-btn product-form__submit" aria-label="Add to Cart">
+        <button (click)="addToCart(item)" [routerLink]="'/cart'" type="submit" name="add" class="cart-btn product-form__submit" aria-label="Add to Cart">
           <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
             <path
               d="M3.67596 4.51919C3.54138 4.51919 3.39971 4.46252 3.30055 4.36335C3.09513 4.15794 3.09513 3.81794 3.30055 3.61252L5.8718 1.04127C6.07721 0.835853 6.41721 0.835853 6.62263 1.04127C6.82805 1.24669 6.82805 1.58669 6.62263 1.7921L4.05138 4.36335C3.94513 4.46252 3.81055 4.51919 3.67596 4.51919Z"
@@ -443,10 +452,5 @@
         </button>
 
       </div>
-      <!--
-            <div class="col-md-4" *ngFor="let item of products" ">
-                {{ item.label }}
-            </div>
-        -->
     </div>
   </div>

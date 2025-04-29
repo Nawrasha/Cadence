@@ -16,6 +16,11 @@ export class NavBarComponent {
     this.getCategories()
   }
 
+  searchOpen = false;
+
+  toggleSearch() {
+    this.searchOpen = !this.searchOpen;
+  }
   async getCategories() {
     await this.services.getCategories().then((data:any) => {
       this.categories = data;

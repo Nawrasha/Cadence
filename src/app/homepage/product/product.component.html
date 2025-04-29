@@ -1,131 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scented Splendor</title>
 
-</head>
-<body>
   <h1 class="title">Scented Splendor Explore Our Collection</h1>
 
   <div class="product-grid">
-    <!-- Product Cards 1–4 -->
-    <div class="product-card">
-      <div class="badge new">New</div>
-      <div class="badge discount">-40%</div>
-      <img loading="lazy" srcset="//cadence-workdo.myshopify.com/cdn/shop/files/1_92ff487b-7102-4a5e-baf5-c79241100b89_300x300.png?v=1717583166" alt="">
-      <p class="name">Beagle Paw Ceramic Candle</p>
-      <div class="stars">★★★★★</div>
+    <div class="product-card" *ngFor="let product of products">
+      <div class="product-actions">
+        <button [routerLink]="'/cart'" class="action-btn" (click)="addToCart(product)" [class.active]="isInCart(product)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+            <path d="M3.67596 4.51919C3.54138 4.51919 3.39971 4.46252 3.30055 4.36335C3.09513 4.15794 3.09513 3.81794 3.30055 3.61252L5.8718 1.04127C6.07721 0.835853 6.41721 0.835853 6.62263 1.04127C6.82805 1.24669 6.82805 1.58669 6.62263 1.7921L4.05138 4.36335C3.94513 4.46252 3.81055 4.51919 3.67596 4.51919Z" fill="#111111"></path>
+            <path d="M13.3234 4.51919C13.1888 4.51919 13.0542 4.4696 12.948 4.36335L10.3767 1.7921C10.1713 1.58669 10.1713 1.24669 10.3767 1.04127C10.5821 0.835853 10.9221 0.835853 11.1276 1.04127L13.6988 3.61252C13.9042 3.81794 13.9042 4.15794 13.6988 4.36335C13.5996 4.46252 13.458 4.51919 13.3234 4.51919Z" fill="#111111"></path>
+            <path d="M14.3157 7.50814C14.2662 7.50814 14.2166 7.50814 14.167 7.50814H14.0041H2.83366C2.33783 7.51522 1.77116 7.51522 1.36033 7.10439C1.03449 6.78564 0.885742 6.2898 0.885742 5.56022C0.885742 3.6123 2.30949 3.6123 2.98949 3.6123H14.0112C14.6912 3.6123 16.1149 3.6123 16.1149 5.56022C16.1149 6.29689 15.9662 6.78564 15.6403 7.10439C15.272 7.47272 14.7762 7.50814 14.3157 7.50814ZM2.98949 6.44564H14.1741C14.4928 6.45272 14.7903 6.45272 14.8895 6.35356C14.9391 6.30397 15.0453 6.13397 15.0453 5.56022C15.0453 4.7598 14.847 4.6748 14.0041 4.6748H2.98949C2.14658 4.6748 1.94824 4.7598 1.94824 5.56022C1.94824 6.13397 2.06158 6.30397 2.10408 6.35356C2.20324 6.44564 2.50783 6.44564 2.81949 6.44564H2.98949Z" fill="#111111"></path>
+            <path d="M6.91309 12.9623C6.62267 12.9623 6.38184 12.7215 6.38184 12.4311V9.9165C6.38184 9.62609 6.62267 9.38525 6.91309 9.38525C7.2035 9.38525 7.44434 9.62609 7.44434 9.9165V12.4311C7.44434 12.7286 7.2035 12.9623 6.91309 12.9623Z" fill="#111111"></path>
+            <path d="M10.1719 12.9623C9.88146 12.9623 9.64062 12.7215 9.64062 12.4311V9.9165C9.64062 9.62609 9.88146 9.38525 10.1719 9.38525C10.4623 9.38525 10.7031 9.62609 10.7031 9.9165V12.4311C10.7031 12.7286 10.4623 12.9623 10.1719 12.9623Z" fill="#111111"></path>
+            <path d="M10.547 16.1148H6.2757C3.73987 16.1148 3.1732 14.606 2.95362 13.2956L1.95487 7.16853C1.90528 6.87811 2.10362 6.60894 2.39403 6.55936C2.68445 6.50978 2.95362 6.70811 3.0032 6.99853L4.00195 13.1185C4.20737 14.3723 4.63237 15.0523 6.2757 15.0523H10.547C12.3674 15.0523 12.5728 14.4148 12.8065 13.1823L13.9965 6.98436C14.0532 6.69394 14.3294 6.50269 14.6199 6.56644C14.9103 6.62311 15.0944 6.89936 15.0378 7.18978L13.8478 13.3877C13.5715 14.8256 13.1111 16.1148 10.547 16.1148Z" fill="#111111"></path>
+        </svg>
+        </button>
+      </div>
+      <div class="badge new" *ngIf="product.isNew">New</div>
+      <div class="badge discount" *ngIf="product.discount">-{{product.discount}}%</div>
+      <img loading="lazy" [srcset]="product.image" [alt]="product.name">
+      <p class="name">{{product.name}}</p>
+      <div class="stars">{{getStars(product.rating)}}</div>
       <div class="price">
-        <span class="current">$12.00</span>
-        <span class="old">$20.00</span>
+        <span class="current">${{product.price.toFixed(2)}}</span>
+        <span class="old" *ngIf="product.oldPrice">${{product.oldPrice.toFixed(2)}}</span>
       </div>
       <div class="colors">
-        <span style="background:#e12eb5;"></span>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img loading="lazy" srcset="//cadence-workdo.myshopify.com/cdn/shop/files/1_36017698-fa16-412f-b71b-c0629dec8f1c_300x300.png?v=1717583300" alt="">
-      <p class="name">Blue Candle</p>
-      <div class="stars">★★☆☆☆</div>
-      <div class="price">
-        <span class="current">$21.00</span>
-      </div>
-      <div class="colors">
-        <span style="background:#d4b311;"></span>
-        <span style="background:#a2bd52;"></span>
-        <span style="background:#963b6d;"></span>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="badge new">New</div>
-      <div class="badge discount">-20%</div>
-      <img loading="lazy" srcset="//cadence-workdo.myshopify.com/cdn/shop/files/1_4f70d0f5-2275-486b-a7b8-c84f695f66a8_300x300.png?v=1717581218" alt="">
-      <p class="name">Vanilla Soy Candle</p>
-      <div class="stars">☆☆☆☆☆</div>
-      <div class="price">
-        <span class="current">$20.00</span>
-        <span class="old">$25.00</span>
-      </div>
-      <div class="colors">
-        <span style="background:#1b2f93;"></span>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img loading="lazy" srcset="//cadence-workdo.myshopify.com/cdn/shop/files/1_52470543-e201-4efe-98a2-206dca71a57f_300x300.png?v=1717580078" alt="">
-      <p class="name">Soy Off–White Twisted Candle</p>
-      <div class="stars">★★★★☆</div>
-      <div class="price">
-        <span class="current">$10.00</span>
-      </div>
-      <div class="colors">
-        <span style="background:#328684;"></span>
-        <span style="background:#929e38;"></span>
-      </div>
-    </div>
-
-    <!-- Product Cards 5–8 -->
-    <div class="product-card">
-      <div class="badge new">New</div>
-      <div class="badge discount">-25%</div>
-      <img loading="lazy" class="" srcset="//cadence-workdo.myshopify.com/cdn/shop/files/1_d4c6114d-8140-4560-acd5-22f9f462c03f_300x300.png?v=1717582759" alt="">      <p class="name">Nordic Style Ceramic Candle Holder</p>
-      <div class="stars">★★★☆☆</div>
-      <div class="price">
-        <span class="current">$15.00</span>
-        <span class="old">$20.00</span>
-      </div>
-      <div class="colors">
-        <span style="background:#ddd;"></span>
-        <span style="background:#fff;"></span>
-        <span style="background:#963b3b;"></span>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="badge new">New</div>
-      <div class="badge discount">-25%</div>
-      <img loading="lazy" class="" srcset="//cadence-workdo.myshopify.com/cdn/shop/files/1_80bef2ba-ae3e-4957-bf74-a8e00c50a5bb_300x300.png?v=1717580394" alt="">      <p class="name">Moon Soy Wax Candle</p>
-      <div class="stars">★★★★☆</div>
-      <div class="price">
-        <span class="current">$15.00</span>
-        <span class="old">$20.00</span>
-      </div>
-      <div class="colors">
-        <span style="background:#fbdcdc;"></span>
-        <span style="background:#f7e85d;"></span>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="badge new">New</div>
-      <img loading="lazy" class="" srcset="//cadence-workdo.myshopify.com/cdn/shop/files/1_2848604d-1ff2-4622-97f5-70a312813974_300x300.png?v=1717582110" alt="">      <p class="name">Mermaid Candle</p>
-      <div class="stars">★★★☆☆</div>
-      <div class="price">
-        <span class="current">$15.00</span>
-      </div>
-      <div class="colors">
-        <span style="background:#fbb7b7;"></span>
-      </div>
-    </div>
-
-    <div class="product-card">
-        <img loading="lazy" srcset="//cadence-workdo.myshopify.com/cdn/shop/files/5_179b70d2-82ba-4b36-ad84-152d4a55a791_300x300.png?v=1717581101" alt="Soy Off-White Swirl Candle">      <p class="name">Knot Candle</p>
-      <div class="stars">★★★★★</div>
-      <div class="price">
-        <span class="current">$25.00</span>
-      </div>
-      <div class="colors">
-        <span style="background:#fff;"></span>
-        <span style="background:#963b3b;"></span>
+        <span *ngFor="let color of product.colors" [style.background]="color"></span>
       </div>
     </div>
   </div>
 
-  <button class="btn">View more Products 
+  <a  href="/list-article/all">
+  <button class="btn" style="margin-bottom: 40px;margin-left: 80vh;">View more Products
+  
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 20 10" fill="none">
         <path d="M16.5803 5.00002C16.5803 5.28602 16.3463 5.52002 16.0603 5.52002L5.24168 5.52002C4.95568 5.52002 4.72168 5.28602 4.72168 5.00002C4.72168 4.71402 4.95568 4.48002 5.24168 4.48002L16.0603 4.48002C16.3463 4.48002 16.5803 4.71402 16.5803 5.00002Z" fill="#111111"></path>
         <path d="M1.04 5.00002C1.04 4.71283 0.807188 4.48002 0.52 4.48002C0.232812 4.48002 -3.52833e-08 4.71283 -2.27299e-08 5.00002C-1.01765e-08 5.28721 0.232812 5.52002 0.52 5.52002C0.807188 5.52002 1.04 5.28721 1.04 5.00002Z" fill="#111111"></path>
@@ -134,6 +41,4 @@
         <path d="M19.8305 5.0001C19.8305 5.1197 19.7889 5.2393 19.7057 5.3381L16.2529 9.3993C16.0683 9.6177 15.7381 9.6437 15.5197 9.4591C15.3013 9.2719 15.2727 8.9443 15.4599 8.7259L18.6293 5.0001L15.4625 1.2743C15.2753 1.0559 15.3039 0.728296 15.5223 0.541095C15.7407 0.353895 16.0683 0.382496 16.2555 0.600896L19.7057 4.6621C19.7889 4.7609 19.8305 4.8805 19.8305 5.0001Z" fill="#111111"></path>
     </svg>
   </button>
-</body>
-</html>
-
+  </a>

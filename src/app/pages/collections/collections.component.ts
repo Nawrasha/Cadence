@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ServicesService } from '../../services/services.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-collections',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './collections.component.html',
   styleUrl: './collections.component.css',
   standalone: true
