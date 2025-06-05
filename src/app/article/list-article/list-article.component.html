@@ -402,7 +402,7 @@
                         <button (click)="increaseQuantity()" class="qty-btn">+</button>
                       </div>
                       <!-- Add to Cart Button -->
-                      <button  type="submit" name="add" class="cart-btn product-form__submit" aria-label="Add to Cart">
+                      <button (click)="addToCart(item)" [routerLink]="'/cart'" type="submit" name="add" class="cart-btn product-form__submit" aria-label="Add to Cart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
                         </svg>
                         <span class="bt-tooltip-content">Add to Cart</span>
