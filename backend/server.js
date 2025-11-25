@@ -13,7 +13,7 @@ app.use(express.json());
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'MySQL2',
+    password: 'nawras',
     database: 'cadence'
   });
 
@@ -28,6 +28,8 @@ app.get('/categories',  (req, res) => {
       res.json(results); // Envoie les résultats en JSON
     });
 });
+
+
 app.get('/productsByCategory/:categ', (req, res) => {
   const categoryId = req.params.categ;  // Récupérer l'ID de la catégorie depuis l'URL
 
